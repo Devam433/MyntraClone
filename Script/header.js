@@ -1,5 +1,5 @@
 const headerNav=document.querySelector(".header-nav");
-headerNav.innerHTML=`<div class="logoContainer"><img src="./assets/images/myntra_logo.webp" alt="logo" style="width: 60px; height: 45px;"></div>
+headerNav.innerHTML=`<div class="logoContainer"><img src="../assets/images/myntra_logo.webp" alt="logo" style="width: 60px; height: 45px;"></div>
 <nav class="navBar">
     <ul>
         <div><li style="list-style-type: none;">MEN</li></div>
@@ -23,7 +23,7 @@ headerNav.innerHTML=`<div class="logoContainer"><img src="./assets/images/myntra
             </span>
         <span style="font-size: small; margin-top: 1px; font-weight: 500;">Profile</span>
     </div>
-    <a href="./Pages/wishlist.html">
+    <a href="./Pages/wishlist.html" style="text-decoration:none; color:black;">
         <div class="actionContainer">
         <i class="fa fa-heart-o" aria-hidden="true"></i>
         <span style="font-size: small; margin-top: 6px; font-weight: 500;">Wishlist</span>
@@ -39,7 +39,7 @@ headerNav.innerHTML=`<div class="logoContainer"><img src="./assets/images/myntra
 document.addEventListener("DOMContentLoaded", ()=>{
     //navigation hover effecr
     let navItems=document.querySelectorAll("ul > div");
-    const color = [ "#EF4040","#FF52A2","#FD8D14","#FFCD4B","#9ADE7B","#C51605"];
+    const color = [ "#EF4040","#FF52A2","#FD8D14","#FFCD4B","#9ADE7B","#C51605" ];
 
     navItems.forEach(function (div, index){
         div.addEventListener("mouseover",function (){

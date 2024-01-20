@@ -9,7 +9,7 @@
 header{
     /*  position: fixed; */
     height: 78px;
-    width: 98.9vw;
+    /* width: 98.9vw; */
     display: flex;
     justify-content: space-around;
     align-items: center;

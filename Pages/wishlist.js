@@ -1,18 +1,39 @@
-// let wishlistItemsContainer=document.querySelector('.wishlist-items-container');
-// wishlistItemsContainer.innerHTML=`><img src="../assets/images/cloths/Tee2.webp" style="width: 210px; height: 280px;"/>`
-let i=0;
-console.log(wishlistItemArray);
-displayWishlistItems();
-function displayWishlistItems() {
+const wishlistItemArrayCopy =JSON.parse(localStorage.getItem("wishlistIDno"));
+// const abc = ['1', '2'];
+// console.log(JSON.parse(wishlistItemArrayCopy));
+console.log(wishlistItemArrayCopy);
+const actualWishlistArrayItems=wishlistItemArrayCopy.map((item)=>{
+    for(let i=0;i<items.length;i++)
+    {
+        if(item==items[i].id)
+        {
+            return items[i];
+        }
+    }
+})
+console.log(actualWishlistArrayItems);
+
+
+
+getItem();
+
+
+
+function getItem()
+{
     let wishlistItemsContainer=document.querySelector('.wishlist-items-container');
-    let Html=``;  //this will have all the items 
-    items.forEach((item)=>{
-        
-        if(item.id==WishListIds[i])
-        console.log(item.id)
-    Html+=`
-    <div class="wishlistItem-container">
-        <div class="wishlist-item-image"><img src="../${item.image}" style="width: 210px; height: 280px;"/></div>
+    let Html=``;
+    actualWishlistArrayItems.forEach(item => {
+        Html+=setItem(item);
+    });
+    wishlistItemsContainer.innerHTML=Html;
+}
+
+
+function setItem(item)
+{
+    return `<div class="wishlistItem-container">
+    <div class="wishlist-item-image"><img src="../${item.image}" style="width: 210px; height: 280px;"/></div>
         <div class="wishlist-item-info">
             <div class="rating">${item.rating.stars}⭐${item.rating.count}</div>
             <div class="company" style="font-size:16px; font-weight:700;">${item.company}</div>
@@ -21,10 +42,4 @@ function displayWishlistItems() {
             <button class="add-to-wishlist" value="${item.id}"><i class="fa fa-heart-o" aria-hidden="true" ></i> Add To Wishlist</button>
         </div>
     </div>`;
-    i++;
-    })
-    wishlistItemsContainer.innerHTML=Html;
 }
-
-console.log(localStorage.getItem("wishlistIDno"));
-const WishListIds=localStorage.getItem("wishlistIDno");
