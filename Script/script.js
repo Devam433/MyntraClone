@@ -19,8 +19,7 @@ else{
 </div>`; 
 }
 
-
-var wishlistItemArray = [];  // store it in the local storage
+var wishlistItemArray = JSON.parse(localStorage.getItem("wishlistIDno")) || []; 
 let itemsContainer=document.querySelector('.shop-items-container');
 displayItems();
 
