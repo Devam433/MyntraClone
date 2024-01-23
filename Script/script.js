@@ -1,8 +1,9 @@
-/* let shopByCategoty=document.querySelector('.shopByCategoty');
+let shopByCategoty=document.querySelector('.shopByCategoty');
 if(!shopByCategoty){
-    return ;
+    
 }
-shopByCategoty.innerHTML=`
+else{
+    shopByCategoty.innerHTML=`
 <div><h2 class="tag">SHOP BY CATEGORY</h2></div>
             <div class="categoryItems">
                 <a href=""><img class="categoryItemImg" src="../assets/images/categories/1.jpg" alt=""></a>
@@ -15,28 +16,16 @@ shopByCategoty.innerHTML=`
                 <a href=""><img class="categoryItemImg" src="./assets/images/categories/8.jpg" alt=""></a>
                 <a href=""><img class="categoryItemImg" src="./assets/images/categories/9.jpg" alt=""></a>
                 <a href=""><img class="categoryItemImg" src="./assets/images/categories/10.jpg" alt=""></a>
-</div>`; */
+</div>`; 
+}
 
- 
-// export const wishlistItemArray = []; 
-// function addToWishlist(itemId){
-//     console.log(itemId);
-//     if(!wishlistItemArray.includes(itemId,0)){
-//         wishlistItemArray.push(itemId);
-//     }
-//     console.log(wishlistItemArray);
-// }
-
-
-var wishlistItemArray = [];  // store it in the local storage
-
-
-
+var wishlistItemArray = JSON.parse(localStorage.getItem("wishlistIDno")) || []; 
+let itemsContainer=document.querySelector('.shop-items-container');
 displayItems();
 
 function displayItems()
 {
-    let itemsContainer=document.querySelector('.shop-items-container');
+    // if(itemsContainer==null){console.log(itemsContainer); }
     let innerHtml=``;  //this will have all the items 
     items.forEach((item)=>{
     innerHtml+=`
@@ -55,10 +44,8 @@ function displayItems()
 }
 
 document.querySelectorAll(`.add-to-wishlist`).forEach((button)=>{
-    button.addEventListener(`click`,(e)=>{s
+    button.addEventListener(`click`,(e)=>{
         const {target}=e;
-        let wishlistIdNo=JSON.stringify(wishlistItemArray);
-        localStorage.setItem("wishlistIDno",wishlistIdNo);
         addToWishlist(target.value);
     })
 })
@@ -68,4 +55,7 @@ function addToWishlist(itemId){
         wishlistItemArray.push(itemId);
     }
     console.log(wishlistItemArray);
+    let WishlistIdNO=JSON.stringify(wishlistItemArray);
+    console.log(`WishlistIdNO ${WishlistIdNO}`);
+    localStorage.setItem("wishlistIDno",WishlistIdNO);
 }
