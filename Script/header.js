@@ -20,7 +20,7 @@ headerNav.innerHTML=`<div class="logoContainer"><img src="../assets/images/myntr
     <div class="actionContainer">
         <span class="material-symbols-outlined">
             person
-            </span>
+        </span>
         <span style="font-size: small; margin-top: 1px; font-weight: 500;">Profile</span>
     </div>
     <a href="./Pages/wishlist.html" style="text-decoration:none; color:black;" id="wishlistbtn">
@@ -29,7 +29,6 @@ headerNav.innerHTML=`<div class="logoContainer"><img src="../assets/images/myntr
         <span style="font-size: small; margin-top: 6px; font-weight: 500;">Wishlist</span>
     </div>
     </a>
-    
     <div class="actionContainer">
         <i class="fa fa-shopping-bag" aria-hidden="true"></i>
         <span style="font-size: small; font-weight: 500; margin-top: 6px; font-weight: 500;">Bag</span>

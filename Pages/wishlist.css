@@ -78,19 +78,24 @@ nav ul div{
     align-items: center;
     justify-content: center;
 }
+
 .actionContainer:hover{
     cursor: pointer;
 }
 
-
+.no-of-items{
+    margin-top: 50px;
+    margin-left: 50px;
+}
 /*WishlistCss*/
 .wishlist-items-container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
+    justify-content:flex-start;
+    gap: 70px;
     /* padding: 20px; */
-    margin-top: 50px;
+    margin-top: 7px;
+    padding: 50px;
 }
 .wishlistItem-container{
     background-color: rgb(255, 255, 255);
@@ -146,4 +151,92 @@ position: absolute;
 }
 .move-to-bag-button:hover{
     cursor: pointer;
+}   
+
+
+/* --- Modal Style --- */
+
+
+.modal{
+    font-family: Assistant,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+-webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    width: 434px;
+    height: 250px;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    padding: 17px;
+    border: .1px solid #e8e8e8;
+    border-radius: 4px;
+    z-index: 100;
+}
+.active{
+    display: block;
+}
+.modal-item{
+    display: flex;
+}
+.product-details-container{
+    display: flex;
+    flex-direction: column;
+    
+}
+.price-list-container{
+    display: flex;
+    align-items: start;
+    gap: 5px;
+    margin-top: 10px;
+}
+.size-container{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.size-btn-container{
+    display: flex;
+    gap: 5px;
+}
+.size-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid ;
+    border-color: rgb(195, 195, 195);
+    
+}
+.modal-item-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 17px;
+    width: 400px;
+    height: 50px;
+    background-color: #e83c75;
+}
+.modal-item-button div h3{
+    color: #ffffff;
+}
+
+.over-lay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom: 0;
+    background-color: rgba(57, 57, 57, 0.459);
+    opacity: 0;
+    pointer-events: none;
+}
+.active-Overlay{
+    opacity: 1;
+    z-index: 1;
+    pointer-events: all;
 }
