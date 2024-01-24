@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        .modal{
+            font-family: Assistant,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: 250px;
+            background-color: rgb(255, 255, 255);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            display: none;
+            padding: 17px;
+            border: 1px pink;
+            border-radius: 7px;
+            z-index: 100;
+        }
+        .active{
+            display: block;
+        }
+        .modal-item{
+            display: flex;
+        }
+        .product-details-container{
+            display: flex;
+            flex-direction: column;
+        }
+        .price-list-container{
+            display: flex;
+            align-items: start;
+            gap: 5px;
+        }
+        .size-container{
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .size-btn-container{
+            display: flex;
+            gap: 5px;
+        }
+        .size-btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgb(195, 195, 195);
+        }
+        .modal-item-button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            width: 400px;
+            height: 50px;
+            background-color: palevioletred;
+        }
+        .modal-item-button div h3{
+            color: #ffffff;
+        }
+        .over-lay{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right:0;
+            bottom: 0;
+            background-color: rgba(220, 213, 213, 0.459);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal active">
+        <div class="modal-item">
+            <div>
+                <img src="" alt="">
+            </div>
+            <div class="product-details-container">
+                <p>This is product name</p>
+                <div class="price-list-container">
+                    <div>Rs.Price </div>
+                    <div style="color:grey;">OrPrice</div>
+                    <div>%off</div>
+                </div>
+            </div>
+        </div>
+        <div class=" size-container">
+            <div><h3 style="margin-bottom: 3px;">Select Size</h3></div>
+            <div class="size-btn-container">
+                <div class="size-btn"><p>XS</p></div>
+                <div class="size-btn"><p>S</p></div>
+                <div class="size-btn"><p>M</p></div>
+                <div class="size-btn"><p>L</p></div>
+                <div class="size-btn"><p>XL</p></div>
+            </div>
+        </div>
+        <div class="modal-item-button">
+            <div><h3>Add To Bag</h3></div>
+        </div>
+    </div>
+    <div class="over-lay"></div>
+</body>
+</html>
