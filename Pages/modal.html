@@ -1,3 +1,6 @@
+<!-- For gitignore
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,5 +110,63 @@
         </div>
     </div>
     <div class="over-lay"></div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Style for buttons */
+    .size-btn {
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Hover effect */
+    .size-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Selected state */
+    .size-btn.selected {
+      background-color: #3498db;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Buttons for different sizes -->
+<button class="size-btn" onclick="selectSize('XS')">XS</button>
+<button class="size-btn" onclick="selectSize('S')">S</button>
+<button class="size-btn" onclick="selectSize('M')">M</button>
+<button class="size-btn" onclick="selectSize('L')">L</button>
+<button class="size-btn" onclick="selectSize('XL')">XL</button>
+
+<script>
+  // Function to handle button selection
+  function selectSize(size) {
+    // Get all size buttons
+    var buttons = document.querySelectorAll('.size-btn');
+
+    // Deselect previously selected button
+    buttons.forEach(function(btn) {
+      btn.classList.remove('selected');
+    });
+
+    // Find the selected button and toggle the 'selected' class
+    var selectedButton = Array.from(buttons).find(btn => btn.innerText === size);
+    if (selectedButton) {
+      selectedButton.classList.toggle('selected');
+    }
+  }
+</script>
+
 </body>
 </html>
