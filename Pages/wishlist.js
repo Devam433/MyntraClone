@@ -179,6 +179,10 @@ function clickedMoveToBagBtn(itemId){
         modalAddToBagBtn.style.backgroundColor="green";
         modalAddToBagBtn.style.color="white";
         let itemId=modalAddToBagBtn.getAttribute("value");
+        let indexOfId=wishlistItemArrayCopy.indexOf(itemId);
+        wishlistItemArrayCopy.splice(indexOfId,1);
+        localStorage.setItem('wishlistIDno',JSON.stringify(wishlistItemArrayCopy));
+        location.reload();
         addItemIdToBag(itemId);
     }
 
