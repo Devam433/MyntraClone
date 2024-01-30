@@ -3,6 +3,35 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
+.bulk-actionStrip{
+    display: flex;
+    width: 627px;
+    height: 32px;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 272.5px;
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+.bulk-selected-item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.bulk-remove-item{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.bulk-remove-item div{
+    display: flex;
+    align-items: center;
+    height: 29px;
+}
+
+
 .bag-layout{
     max-width: 1050px;
     margin: auto;
@@ -82,10 +111,18 @@
     background: #eeeeee;
     color: #232638;
     font-weight: 600;
-    cursor: pointer;
+    /* cursor: pointer; */
     margin-right: 12px;
     border-radius: 2px;
     line-height: 16px;
+}
+.bag-item-right .size-qty .update-qty .select-qty {
+    border: none;
+    background: #eeeeee;
+    outline: none;
+}
+.bag-item-right .size-qty .update-qty .select-qty:hover{
+    cursor: pointer;
 }
 
 .bag-item-right .price{
