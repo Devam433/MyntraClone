@@ -1,5 +1,19 @@
-const bagItemsId=JSON.parse(localStorage.getItem("itemdIdForBag")) || [];//we get the ids stored in local storage
-const actualBagItemsId= bagItemsId.map(id=>{
+const bagItemsId=JSON.parse(localStorage.getItem("itemdIdForBag")) || [];//bagItemsId will get the array of object
+console.log(`BagItemsId`);
+console.log(bagItemsId);
+//justIdFromBagItemsId has id of each item
+const justIdFromBagItemsId=[];
+bagItemsId.forEach(item=>{
+    justIdFromBagItemsId.push(item.id);
+})
+//justSizeFromBagItemsId has size of each item 
+const justSizeFromBagItemsId=[];
+bagItemsId.forEach(item=>{
+    justSizeFromBagItemsId.push(item.size);
+})
+
+console.log(justIdFromBagItemsId);
+const actualBagItemsId=justIdFromBagItemsId.map(id=>{
     for(let i=0;i<items.length;i++)
     {
         if(id==items[i].id){
@@ -7,8 +21,13 @@ const actualBagItemsId= bagItemsId.map(id=>{
         }
     }
 })
-// console.log("actualBagItemsId");
-// console.log(actualBagItemsId);
+
+justSizeFromBagItemsId.forEach((size,i)=>{
+    actualBagItemsId[i].size=`${size}`;//here adding a new object property named size that will have the size value
+})
+
+console.log("actualBagItemsId");
+console.log(actualBagItemsId);
 setBagItem();
 function setBagItem(){
     const bagLyoutLeft=document.querySelector('.bag-layout-left');
@@ -17,6 +36,8 @@ function setBagItem(){
         Html+=getBagItem(item);
     })
     bagLyoutLeft.innerHTML=Html;
+    const totalBagItem=document.querySelector('.total-bag-item');
+    totalBagItem.innerHTML=actualBagItemsId.length;
 }
 function getBagItem(item){
     return `<div class="bag-item">
@@ -36,8 +57,16 @@ function getBagItem(item){
         </div>
         
         <div class="size-qty"> <!-- Size and Qnty-->
-            <div class="update-size">Size :</div> <!--Size-->
-            <div class="update-qty">Qty :</div><!--Qnty-->
+            <div class="update-size">Size: ${item.size}</div> <!--Size-->
+            <div class="update-qty">Qty :
+                <select name="Qnty" id="Qnty" class="select-qty">
+                    <option value="1" style="">1</option>
+                    <option value="2" style="">2</option>
+                    <option value="3" style="">3</option>
+                    <option value="4" style="">4</option>
+                    <option value="5" style="">5</option>
+                </select>
+            </div><!--Qnty-->
         </div>
     
         <div class="price" style="font-size:14px; font-weight:700;">
@@ -86,7 +115,7 @@ function openModal(itemId){
             </div>
             <div class="remove-bagItem">
                 <div class="remove-bagItem-btn" onclick="remmoveItem('${actualBagItemsId[i].id}')"><h4>REMOVE</h4></div> <!--Here '$ {actualBagItemsId[i].id}' quotes is used because Js sometimes automatically converts string to number and vice versa If value is a String '001' it becomes Number 1 -->
-                <div class="remove-bagItem-btn" style="color: brown; border-left: 1px solid rgb(215, 215, 215);" onclick="moveItemToWishlist(${actualBagItemsId[i].id})"><h4>MOVE TO WISHLIST</h4></div>
+                <div class="remove-bagItem-btn" style="color: brown; border-left: 1px solid rgb(215, 215, 215);" onclick="moveItemToWishlist('${actualBagItemsId[i].id}')"><h4>MOVE TO WISHLIST</h4></div>
             </div>
         </div>
         <div class="over-lay"></div>`;
@@ -97,8 +126,23 @@ function openModal(itemId){
 function remmoveItem(itemId){
     console.log(itemId);
     console.log("RemoveItemId"+itemId);
-    let indexOfId=bagItemsId.indexOf(itemId);
+    console.log(bagItemsId);
+    let indexOfId;
+    actualBagItemsId.forEach((item,i)=>{
+        if(itemId==item.id) {
+            indexOfId=i;
+        }
+    })
+    console.log(indexOfId);
     bagItemsId.splice(indexOfId,1);
     localStorage.setItem("itemdIdForBag",JSON.stringify(bagItemsId));
+    location.reload();
+}
+
+function moveItemToWishlist(itemId){
+    const WishlistItemId=JSON.parse(localStorage.getItem("wishlistIDno"));
+    WishlistItemId.push(itemId);
+    localStorage.setItem("wishlistIDno",JSON.stringify(WishlistItemId));
+    remmoveItem(itemId);
     location.reload();
 }
