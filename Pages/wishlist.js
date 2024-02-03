@@ -159,15 +159,15 @@ function addItemIdToBag(itemId,size){
         });
     }
     console.log(`This is inside addItemIdToBag`);
-    alert('hel');
+ 
     console.log(itemdIdForBag);
-    alert('hel');
+
     let itemIdInBag=JSON.stringify(itemdIdForBag);
     console.log(itemdIdForBag);
-    alert('hel');
+
     localStorage.setItem("itemdIdForBag",itemIdInBag);
     console.log(itemdIdForBag);
-    alert('hel');
+
 
     const modal=document.querySelector('.modal');
     modal.classList.remove("active");
