@@ -151,16 +151,23 @@ function sizeClicked(size){
     // clickedMoveToBagBtn(size);
 }
 //
-function addItemIdToBag(itemId){
+function addItemIdToBag(itemId,size){
     if(!itemdIdForBag.includes(itemId,0)){
-        itemdIdForBag.push(itemId);
+        itemdIdForBag.push({
+            "id":`${itemId}`,
+            "size":`${size}`
+        });
     }
-
+    console.log(`This is inside addItemIdToBag`);
+ 
     console.log(itemdIdForBag);
+
     let itemIdInBag=JSON.stringify(itemdIdForBag);
     console.log(itemdIdForBag);
+
     localStorage.setItem("itemdIdForBag",itemIdInBag);
     console.log(itemdIdForBag);
+
 
     const modal=document.querySelector('.modal');
     modal.classList.remove("active");
@@ -183,7 +190,7 @@ function clickedMoveToBagBtn(itemId){
         wishlistItemArrayCopy.splice(indexOfId,1);
         localStorage.setItem('wishlistIDno',JSON.stringify(wishlistItemArrayCopy));
         location.reload();
-        addItemIdToBag(itemId);
+        addItemIdToBag(itemId,size);
     }
 
 }

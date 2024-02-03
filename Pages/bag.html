@@ -8,24 +8,28 @@
     <link rel="stylesheet" href="../Style/header.css">
     <link rel="stylesheet" href="../Style/bag.css">
 </head>
-<style>
-    
-</style>
 <body>
     <header class="header-nav"></header>
-
-    <div class="bag-layout">
-        <div class="bag-layout-left">
+        <div class="bulk-actionStrip">
+            <div class="bulk-selected-item">
+                <div style="margin-top: 5px;"><input type="checkbox" style="width: 18px; height: 17px;"></div>
+                <div style="font-weight: 600; color: #282c3f;">   <span>0</span>/<span class="total-bag-item">0</span> ITEM SELECTED </div>
+            </div>
+            <div class="bulk-remove-item" style="font-size: 12px; font-weight: 600; color: #535766;">
+                <div style="border-right: 1px solid #b7b7b7; padding-right: 20px;">REMOVE</div>
+                <div>MOVE TO WISHLIST</div>
+            </div>
         </div>
+    <div class="bag-layout">
+        <div class="bag-layout-left"></div>
         <div class="bag-layout-right"></div>
     </div>
 
     <div class="modal-container"></div>
 
     
-<script src="../data/items.js"></script>
+    <script src="../data/items.js"></script>
     <script src="../Script/header.js"></script>
-    
     <script src="../Script/bag.js"></script>
 </body>
 </html>
