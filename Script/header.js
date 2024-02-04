@@ -23,7 +23,7 @@ headerNav.innerHTML=`<div class="logoContainer"><img src="../assets/images/myntr
         </span>
         <span style="font-size: small; margin-top: 1px; font-weight: 500;">Profile</span>
     </div>
-    <a href="./Pages/wishlist.html" style="text-decoration:none; color:black;" id="wishlistbtn">
+    <a href="../Pages/wishlist.html" style="text-decoration:none; color:black;" id="wishlistbtn">
         <div class="actionContainer">
         <i class="fa fa-heart-o" aria-hidden="true"></i>
         <span style="font-size: small; margin-top: 6px; font-weight: 500;">Wishlist</span>
