@@ -44,7 +44,7 @@ function getBagItem(item){
     <div class="bag-item-left">
         <div>
             <img src="../${item.image}" alt="">
-            <input type="checkbox" name="" id="">
+            <input type="checkbox" name="" id="" valueid="${item.id}" class="check-box">
         </div>
     </div>
     <div class="bag-item-right">
@@ -82,7 +82,6 @@ function getBagItem(item){
 }
 
 //code for removing bag item
-
 const removeItemFromBagBtns=document.querySelectorAll('.remove-item-from-bag');
 Array.from(removeItemFromBagBtns).forEach(btn=>{
     btn.addEventListener('click',(e)=>{
@@ -145,4 +144,88 @@ function moveItemToWishlist(itemId){
     localStorage.setItem("wishlistIDno",JSON.stringify(WishlistItemId));
     remmoveItem(itemId);
     location.reload();
+}
+
+////
+
+let boxCheckedCount=0;
+const checkBoxs=document.querySelectorAll('.check-box');
+const BulkcheckBox=document.querySelector('.check-all-box');
+BulkcheckBox.onclick=checkAll;
+// BulkcheckBox.addEventListener('click',check);
+function check(checked=true){
+    checkBoxs.forEach(box=>{
+        // alert(box.checked)
+            if(box.checked==false){
+                box.checked=checked;
+                boxCheckedCount++;
+            }      
+    })
+    updateSelectedBagItem(boxCheckedCount);
+}
+function checkAll(){
+    // alert(BulkcheckBox.checked)
+    if(BulkcheckBox.checked==false){
+        unCheckAll();
+    }
+    else{
+        check();
+        this.onclick=unCheckAll;
+    }
+    
+}
+function unCheckAll(){
+    checkBoxs.forEach(box=>{
+        // alert(box.checked)
+            if(box.checked==true){
+                box.checked=false;
+                boxCheckedCount--;
+            }      
+    })
+    updateSelectedBagItem(boxCheckedCount);
+    this.onclick=checkAll;
+}
+
+
+function updateSelectedBagItem(boxCheckedCount){
+ const selectedBagItem=document.querySelector('.selected-bag-item');
+ selectedBagItem.innerHTML=boxCheckedCount;
+ if(checkIfAllItemsSelected(boxCheckedCount)){
+    BulkcheckBox.checked=true;
+ }
+ else{
+    BulkcheckBox.checked=false;
+ }
+}
+
+
+function checkIndividualItemCheckBox(){
+    this.checked=true;
+    boxCheckedCount+=1;
+    updateSelectedBagItem(boxCheckedCount);
+}
+
+function uncheckIndividualItemCheckBox(){
+    this.checked=false;
+    boxCheckedCount--;
+    if(boxCheckedCount>=0)
+    updateSelectedBagItem(boxCheckedCount);
+}
+checkBoxs.forEach(box=>{
+    box.addEventListener('click',(e)=>{
+        // alert(box.checked);
+        if(box.checked==true){
+            checkIndividualItemCheckBox(); 
+        }
+        else{
+            uncheckIndividualItemCheckBox();
+        }
+    })
+})
+console.log(bagItemsId);
+function checkIfAllItemsSelected(boxCheckedCount){
+    if(boxCheckedCount==bagItemsId.length){
+        return true;
+    }
+    return false;
 }
