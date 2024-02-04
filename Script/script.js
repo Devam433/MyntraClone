@@ -32,7 +32,7 @@ function displayItems()
     <div class="item-container">
         <div class="item-image"><img src="${item.image}" style="width: 210px; height: 280px;"/></div>
         <div class="item-info">
-            <div class="rating">${item.rating.stars}⭐${item.rating.count}</div>
+            <div class="rating">${item.rating.stars}★${item.rating.count}</div>
             <div class="company" style="font-size:16px; font-weight:700;">${item.company}</div>
             <div class="item-name truncate" style="font-size:14px; font-weight:400;"> ${item.item_name} </div>
             <div class="price" style="font-size:14px; font-weight:700;">₹${item.current_price} </div>
