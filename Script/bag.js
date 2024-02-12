@@ -162,14 +162,16 @@ function check(checked=true){
             }      
     })
     updateSelectedBagItem(boxCheckedCount);
+
 }
 function checkAll(){
-    // alert(BulkcheckBox.checked)
+    alert(BulkcheckBox.checked)
     if(BulkcheckBox.checked==false){
         unCheckAll();
     }
     else{
         check();
+        calculateCheckoutAll();
         this.onclick=unCheckAll;
     }
     
@@ -211,21 +213,78 @@ function uncheckIndividualItemCheckBox(){
     if(boxCheckedCount>=0)
     updateSelectedBagItem(boxCheckedCount);
 }
+
 checkBoxs.forEach(box=>{
     box.addEventListener('click',(e)=>{
         // alert(box.checked);
         if(box.checked==true){
             checkIndividualItemCheckBox(); 
+            let itemId=box.getAttribute('valueid');
+            calculateCheckout(itemId,true);
         }
         else{
+            alert("clickElse")
             uncheckIndividualItemCheckBox();
+            calculateCheckout(itemId,false);
         }
     })
 })
+
 console.log(bagItemsId);
 function checkIfAllItemsSelected(boxCheckedCount){
     if(boxCheckedCount==bagItemsId.length){
         return true;
     }
     return false;
+}
+
+
+function calculateCheckout(itemId,checked){
+    const priceValue=document.querySelector('.price-value');
+    const discountValue=document.querySelector('.discount-value');
+    const priceAfterDiscount=document.querySelector('.price-after-discount');
+    const totalPriceToPay=document.querySelector('.total-price-to-pay');
+    if(checked){
+        alert("if");
+    actualBagItemsId.forEach(item=>{
+        if(item.id==itemId)
+        {
+        priceValue.innerHTML=`${parseInt(priceValue.innerHTML) +parseInt(item.original_price)}`;
+        priceAfterDiscount.innerHTML=`${parseInt(item.current_price)+parseInt(priceAfterDiscount.innerHTML)}`;
+        totalPriceToPay.innerHTML=`${parseInt(item.current_price)+parseInt(totalPriceToPay.innerHTML)}`;
+        let discountPerc=(parseInt(priceAfterDiscount.innerHTML)/parseInt(priceValue.innerHTML))*100;
+        discountValue.innerHTML=`${Math.ceil(discountPerc)}%`;
+        }
+    })
+    }
+    else{
+        alert("else");
+        actualBagItemsId.forEach(item=>{
+            if(item.id==itemId)
+            {
+            priceValue.innerHTML=`${parseInt(priceValue.innerHTML)-parseInt(item.original_price)}`;
+            priceAfterDiscount.innerHTML=`${parseInt(item.current_price)+parseInt(priceAfterDiscount.innerHTML)}`;
+            totalPriceToPay.innerHTML=`${parseInt(item.current_price)+parseInt(totalPriceToPay.innerHTML)}`;
+            let discountPerc=(parseInt(priceAfterDiscount.innerHTML)/parseInt(priceValue.innerHTML))*100;
+            discountValue.innerHTML=`${Math.ceil(discountPerc)}%`;
+            }
+        })
+    }
+
+}
+function calculateCheckoutAll(){
+    const priceValue=document.querySelector('.price-value');
+    const discountValue=document.querySelector('.discount-value');
+    const priceAfterDiscount=document.querySelector('.price-after-discount');
+    const totalPriceToPay=document.querySelector('.total-price-to-pay');
+
+    actualBagItemsId.forEach(item=>{
+    {
+        priceValue.innerHTML=`${parseInt(priceValue.innerHTML) +parseInt(item.original_price)}`;
+        priceAfterDiscount.innerHTML=`${parseInt(item.current_price)+parseInt(priceAfterDiscount.innerHTML)}`;
+        totalPriceToPay.innerHTML=`${parseInt(item.current_price)+parseInt(totalPriceToPay.innerHTML)}`;
+        let discountPerc=(parseInt(priceAfterDiscount.innerHTML)/parseInt(priceValue.innerHTML))*100;
+        discountValue.innerHTML=`${Math.ceil(discountPerc)}%`;
+    }
+})
 }

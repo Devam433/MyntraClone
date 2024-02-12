@@ -39,7 +39,7 @@ function setItem(item)
             <div class="item-name truncate" style="font-size:14px; font-weight:400;"> ${item.item_name} </div>
             <div class="price" style="font-size:14px; font-weight:700;">
                 <div>Rs. ${item.current_price} </div>
-                <div style="color:grey;">₹${item.original_price}</div>
+                <div style="color:grey; text-decoration: line-through;">₹${item.original_price}</div>
                 <div>${item.discount_percentage}% off</div>
             </div>
             <div class="move-to-bag-button" value="${item.id}"><p value="${item.id}">Move to Bag</p></div>
